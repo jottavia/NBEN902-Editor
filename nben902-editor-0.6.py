@@ -128,13 +128,12 @@ def main():
 
     def save_file():
         nonlocal file_path, df
-        save_file_path = filedialog.asksaveasfilename(defaultextension=".txt")
+        save_file_path = filedialog.asksaveasfilename(defaultextension=".txt", initialfile="paysrp.nben902.sccea.input")
         if not save_file_path:
             return
         data = editable_table.get_data()
         df = pd.DataFrame(data, columns=[col[0] for col in columns])
         save_data(df, save_file_path)
-
 
     def add_new_row():
         editable_table.add_row()
