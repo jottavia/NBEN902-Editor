@@ -1,0 +1,21 @@
+Here are the requirements you provided for this code:
+
+    Create a GUI program to edit a fixed-width file field by field.
+    Allow the user to open and select a file.
+    Display each field in a separate input widget.
+    Show a label at the top of each column.
+    The input field box size should match the field size in the file specification.
+    Deduction End Date field should be empty if the field is blank.
+    Add a delete button next to each row that allows the user to delete that specific row.
+    Add a button to create a new blank row.
+    Implement a save button that opens a "Save As" dialog and allows the user to change the filename.
+    Save the file in the original file format.
+    The Deduction Amount field should be right-justified and zero-filled to the left.
+    The program should be able to save the file even if no file was opened initially, in the format of the file specification.
+    The Employee Name field should be all capitals.
+    The Employee ID field should have an "N" in it by default.
+    The default save file name should be "paysrp.nben902.sccea.input".
+    Add a button to close the program that prompts to save any changes, and if yes, saves them.
+    If the Deduction End Date field is empty, save it as blank.
+    All data in the Name field should be saved as capital letters.
+    
