@@ -24,3 +24,5 @@ Here are the requirements for this code:
     	   * Effective Date must be in the format "MM-DD-CCYY".
     	   * Deduction End Date is not required but if entered, must be in the format "MM-DD-CCYY".
     	   * Deduction Amount must be a number greater than zero.
+    20. Scrollbars when the input rows exceed the length of the frame.
+    21. Duplicate row button on the left side of the row. 
