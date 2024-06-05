@@ -1,0 +1,9 @@
+Field              Field Type  Length  Displacement  Comments
+--------------------------------------------------------------------------------
+Agency Code        Char        10      1-10          Left justify, Blank fill
+Name               Char        50      11-60         Last, First, MI (Mixed Case)
+Employee ID        Char        9       61-69         
+Deduction Code     Char        6       70-75         Left justify, Blank fill
+Effective Date     Char        10      76-85         Format: MM-DD-CCYY (includes dashes)
+Deduction End Date Char        10      80-95         Format: MM-DD-CCYY (includes dashes)
+Deduction Amount   Nbr         8       96-103        Zero Fill
