@@ -1,6 +1,6 @@
 # NBEN902 Editor
 
-Current Version 1.7
+Current Version 1.8
 
 NBEN902 Editor is a tool for editing fixed-width files with specific column formats. It allows for the addition, modification, and deletion of rows. It also supports member modification by selecting data from an Excel spreadsheet.
 
@@ -21,7 +21,7 @@ For more detailed information, see the [About](ABOUT.md) page.
 - pandas
 - openpyxl
 - tkinter
-
+- Paramiko
 ## Installation
 
 1. Clone the repository:
@@ -36,7 +36,8 @@ For more detailed information, see the [About](ABOUT.md) page.
 	pip install pandas
 	pip install openpyxl
 	pip install tkinter
-    pip install pandas openpyxl
+    	pip install pandas openpyxl
+   	pip install paramiko
 
 Usage
 
@@ -50,11 +51,12 @@ Usage
 
 Project Structure
 
-    main.py: The main script to run the application.
-    editable_table.py: Contains the EditableTable class for managing the table of data.
-    file_operations.py: Functions for parsing and saving fixed-width files.
-    member_selector.py: A module for selecting members from an Excel spreadsheet.
-    utils.py: Utility functions, including tooltip functionality.
+    src/main.py: The main script to run the application.
+    src/editable_table.py: Contains the EditableTable class for managing the table of data.
+    src/file_operations.py: Functions for parsing and saving fixed-width files.
+    src/member_selector.py: A module for selecting members from an Excel spreadsheet.
+    src/utils.py: Utility functions, including tooltip functionality.
+    src/sftp_transmitter.py: Handles the SFTP transmission with a detailed dialog and progress indicator.
     .gitignore: Git ignore file to exclude unnecessary files from the repository.
     README.md: Project documentation.
 
@@ -76,3 +78,4 @@ NBEN902_Editor/
 │   ├── file_operations.py
 │   ├── member_selector.py
 │   └── utils.py
+|   ├── sftp_transmitter.py
