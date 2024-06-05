@@ -7,6 +7,7 @@ import os
 import subprocess
 import pandas as pd
 from openpyxl import load_workbook
+from sftp_transmitter import SFTPTransmitter, save_before_transmit
 
 def main():
     root = tk.Tk()
@@ -14,6 +15,7 @@ def main():
     root.geometry("1000x600")
 
     file_path = None
+    default_filename = "paysrp.nben902.sccea.input"
     columns = [
         ("Agency Code", 10),
         ("Name", 50),
@@ -26,7 +28,7 @@ def main():
 
     def open_file():
         nonlocal file_path
-        new_file_path = filedialog.askopenfilename()
+        new_file_path = filedialog.askopenfilename(initialfile=default_filename, filetypes=[("Input files", "*.input"), ("All files", "*.*")])
         if not new_file_path:
             return
         new_df = parse_fixed_width_file(new_file_path)
@@ -39,16 +41,18 @@ def main():
         editable_table.load_data(combined_df)
         file_path = new_file_path
 
-    def save_file():
+    def save_file(save_file_path=None):
         nonlocal file_path
-        save_file_path = filedialog.asksaveasfilename(initialfile=os.path.basename(file_path) if file_path else "")
         if not save_file_path:
-            return
+            save_file_path = filedialog.asksaveasfilename(initialfile=os.path.basename(file_path) if file_path else default_filename, defaultextension=".input", filetypes=[("Input files", "*.input"), ("All files", "*.*")])
+            if not save_file_path:
+                return
         data = editable_table.get_data()
         if data is None:
             return
         df = pd.DataFrame(data, columns=[col[0] for col in columns])
         save_data(df, save_file_path)
+        file_path = save_file_path
 
     def add_new_row():
         editable_table.add_row()
@@ -101,12 +105,11 @@ def main():
             messagebox.showerror("Error", f"Failed to read the member data file: {e}")
 
     def transmit_902():
-        current_directory = os.path.dirname(os.path.abspath(__file__))
-        try:
-            subprocess.run(["902-sftp.exe"], check=True, cwd=current_directory)
-        except Exception as e:
-            messagebox.showerror("Error", f"Error running 902-sftp: {str(e)}")
-
+        nonlocal file_path
+        file_path = save_before_transmit(file_path, save_file)
+        if file_path:
+            SFTPTransmitter(root, file_path, save_file)
+            
     def close_app():
         data = editable_table.get_data()
         if data is None:
