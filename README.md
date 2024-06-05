@@ -2,6 +2,8 @@
 
 NBEN902 Editor is a tool for editing fixed-width files with specific column formats. It allows for the addition, modification, and deletion of rows. It also supports member modification by selecting data from an Excel spreadsheet.
 
+For more detailed information, see the [About](ABOUT.md) page.
+
 ## Features
 
 - Load fixed-width files for editing.
